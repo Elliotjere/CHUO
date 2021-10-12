@@ -10,6 +10,17 @@
 	<title></title>
 </head>
 <body>
-<p style="color:green">welcome <?php echo $_SESSION['name']; ?></p>
+<p style="color:green">welcome <b><?php echo $_SESSION['name']; ?></b></p>
+
+<form method="post">
+	<button type = "logout" name = "logout">logout</button>
+	<?php
+		if (isset($_POST['logout'])) {
+		 	session_destroy();
+		 	header("location:loginhtml.php");
+		 } 
+	 ?>
+</form>
+
 </body>
 </html>
