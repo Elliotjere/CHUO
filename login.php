@@ -4,6 +4,7 @@ session_start();
 //create connection to the database server.
 $conn = new mysqli("localhost", "root", "", "dit");
 
+
 	//creating session variables.
 	$idnumber = $_SESSION['idnumber'] = $_POST['idnumber'];
 	$pwd = $_SESSION['pwd'] = md5($_POST['pwd']);
