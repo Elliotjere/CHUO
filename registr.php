@@ -48,12 +48,17 @@
 		//registering user data to dbase.
 
 			//escaping special characters to used by the database query
+			//removing html special characters from input fields
+		
+			$regno = htmlspecialchars($conn->real_escape_string( trim($_POST['regnumber'])));
 
-			$regno = $conn->real_escape_string( trim($_POST['regnumber']));
-			$name = $conn->real_escape_string( trim($_POST['fname']));
-			$program = $conn->real_escape_string( trim($_POST['program']));
-			$phone = $conn->real_escape_string( trim($_POST['phone-number']));
-			$pwd = $conn->real_escape_string( trim( md5($_POST['password'])));
+			$name = htmlspecialchars($conn->real_escape_string( trim($_POST['fname'])));
+
+			$program = htmlspecialchars($conn->real_escape_string( trim($_POST['program'])));
+
+			$phone = htmlspecialchars($conn->real_escape_string( trim($_POST['phone-number'])));
+
+			$pwd = htmlspecialchars($conn->real_escape_string( trim( md5($_POST['password']))));
 
 
 			$sql = "INSERT INTO students (id, name, program, phonenumber, password)
