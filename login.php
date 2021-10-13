@@ -5,7 +5,7 @@ session_start();
 $conn = new mysqli("localhost", "root", "", "dit");
 
 
-	//creating session variables
+	//creating session variables.
 	$idnumber = $conn->real_escape_string($_SESSION['idnumber'] = $_POST['idnumber']);
 	$pwd = $conn->real_escape_string($_SESSION['pwd'] = md5($_POST['pwd']));
 	$login = $conn->real_escape_string($_SESSION['login'] = $_POST['login']);

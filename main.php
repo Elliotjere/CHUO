@@ -10,12 +10,12 @@
 	<title></title>
 </head>
 <body>
-<p style="color:green">welcome <b><?php echo $_SESSION['name']; ?></b></p>
+<p style="color:green">welcome <b><?php if(isset($_SESSION['login'])){echo $_SESSION['name'];} ?></b></p>
 
-<form method="post">
+<form method="get">
 	<button type = "logout" name = "logout">logout</button>
 	<?php
-		if (isset($_POST['logout'])) {
+		if (isset($_GET['logout'])) {
 		 	session_destroy();
 		 	header("location:loginhtml.php");
 		 } 

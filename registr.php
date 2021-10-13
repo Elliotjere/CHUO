@@ -61,7 +61,7 @@
 
 			 if ($conn->query($sql) == TRUE) {
 				echo "<p style = 'color:green; font-size:20px'>you have succesfully created your account 
-				<a href = 'login.html'>click here to</a> login 	</p>";
+				<a href = 'loginhtml.php'>click here to</a> login 	</p>";
 			 }else{
 				echo "<p style = 'color:red; font-size:20px'>there was a problem creating your account please try again later</p>";
 			}
