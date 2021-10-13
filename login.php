@@ -5,10 +5,14 @@ session_start();
 $conn = new mysqli("localhost", "root", "", "dit");
 
 
-	//creating session variables
-	$idnumber = $conn->real_escape_string($_SESSION['idnumber'] = $_POST['idnumber']);
-	$pwd = $conn->real_escape_string($_SESSION['pwd'] = md5($_POST['pwd']));
-	$login = $conn->real_escape_string($_SESSION['login'] = $_POST['login']);
+	//creating session variables.
+
+	//removing html special characters from input
+	$idnumber = htmlspecialchars($conn->real_escape_string($_SESSION['idnumber'] = $_POST['idnumber']));
+
+	$pwd = htmlspecialchars($conn->real_escape_string($_SESSION['pwd'] = md5($_POST['pwd'])));
+
+	$login = htmlspecialchars($conn->real_escape_string($_SESSION['login'] = $_POST['login']));
 
 	//checking if user clicked login button
 	if (isset($_SESSION['login'])) {
