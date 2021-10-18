@@ -12,9 +12,9 @@ body{
     position: relative;
     text-align: center;
     border: 1px solid #d9d9d9;
-    height: 28rem; 
+    height: 30rem; 
     width: 18rem;
-    margin-left: 35rem;
+    margin-left: 33rem;
     margin-top: 5rem;
     background-color: #ffffff;
     border-radius: 5px;
@@ -94,3 +94,10 @@ body{
     padding: 5px;
     text-decoration: none;
 }
+
+#signUP{
+    position: relative;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+

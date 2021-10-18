@@ -90,7 +90,7 @@ $link = new mysqli("localhost", "root", "", "dit");
 
 		<br><br>
 		<button type="submit" value="submited" name = "reg_submit" >submit</button>
-		<p>or click here to <a href="loginhtml.html">login</a></p>
+		<p>or click here to <a href="loginhtml.php">login</a></p>
 	</form>
 	</center>
 
