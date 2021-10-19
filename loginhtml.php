@@ -25,8 +25,8 @@
 			} 
 		 ?> -->
 		<!-- <p>or <a href="registration.php">create account</a></p> -->
-		<div id="or-content"><p class="orcenter">or</p></div>
-		<div id="goggle"><button name = "login" id="google-btn"><a href="https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=689286984790-d8pi01ip72qttb4mugpli1bs2htc76g7.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fdashboard.ngrok.com%2Flogin%2Fgoogle%2Fauthorize&response_type=code&scope=email&state=yPcylBKFGBAU0ej9SORDaJEtC8GFe9VEq70ooWRGeXI&flowName=GeneralOAuthFlow">Login with Goggle</a></button></div>
+		<!-- <div id="or-content"><p class="orcenter">or</p></div>
+		<div id="goggle"><button name = "login" id="google-btn"><a href="https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=689286984790-d8pi01ip72qttb4mugpli1bs2htc76g7.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fdashboard.ngrok.com%2Flogin%2Fgoogle%2Fauthorize&response_type=code&scope=email&state=yPcylBKFGBAU0ej9SORDaJEtC8GFe9VEq70ooWRGeXI&flowName=GeneralOAuthFlow">Login with Goggle</a></button></div> -->
 	    </form><br>
 		<div id="signUP">
 			<p>Don't have Account?</p>
