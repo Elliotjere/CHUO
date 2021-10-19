@@ -46,11 +46,19 @@
 		}
 
 		//registering user data to dbase.
-			$regno = trim($_POST['regnumber']);
-			$name = trim($_POST['fname']);
-			$program = trim($_POST['program']);
-			$phone = trim($_POST['phone-number']);
-			$pwd = trim(md5($_POST['password']));
+
+			//escaping special characters to used by the database query
+			//removing html special characters from input fields
+		
+			$regno = htmlspecialchars($conn->real_escape_string( trim($_POST['regnumber'])));
+
+			$name = htmlspecialchars($conn->real_escape_string( trim($_POST['fname'])));
+
+			$program = htmlspecialchars($conn->real_escape_string( trim($_POST['program'])));
+
+			$phone = htmlspecialchars($conn->real_escape_string( trim($_POST['phone-number'])));
+
+			$pwd = htmlspecialchars($conn->real_escape_string( trim( md5($_POST['password']))));
 
 
 			$sql = "INSERT INTO students (id, name, program, phonenumber, password)
@@ -58,9 +66,9 @@
 
 			 if ($conn->query($sql) == TRUE) {
 				echo "<p style = 'color:green; font-size:20px'>you have succesfully created your account 
-				<a href = 'login.html'>click here to</a> login 	</p>";
+				<a href = 'loginhtml.php'>click here to</a> login 	</p>";
 			 }else{
-				echo "<p style = 'color:red; font-size:20px'>there was a problem creating your account</p>";
+				echo "<p style = 'color:red; font-size:20px'>there was a problem creating your account please try again later</p>";
 			}
 
 	}

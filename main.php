@@ -9,7 +9,18 @@
 	<meta charset="utf-8">
 	<title></title>
 </head>
-<body>
-<p style="color:green">welcome <?php echo $_SESSION['name']; ?></p>
+<body id="body">
+<p style="color:green" id="welcome">welcome <b><?php if(isset($_SESSION['login'])){echo $_SESSION['name'];} ?></b></p>
+
+<form method="post">
+	<button type = "logout" name = "logout">logout</button>
+	<?php
+		if (isset($_POST['logout'])) {
+		 	session_destroy();
+		 	header("location:loginhtml.php");
+		 } 
+	 ?>
+</form>
+
 </body>
 </html>
