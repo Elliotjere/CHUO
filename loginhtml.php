@@ -27,7 +27,7 @@
 				<a href="#" id="forgetpsw" > forget password?</a><br> 
 			</div>
 
-           <button class="btn"  type="submit" value="submited" name = "login_submit">LOGIN </button>
+           <button class="btn"  type="submit" value="submited" name = "login">LOGIN </button>
             <h4>Still not connected? <a href="registration.php" target="_blank" style="text-decoration: none;">Sign Up</a></h4>	
 			<script>
 		<?php 
