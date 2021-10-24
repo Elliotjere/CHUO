@@ -12,7 +12,7 @@
 	
 	//connecting the user to the school database server.
 
-	$conn = new mysqli("localhost", "root", "", "dit");
+	$conn = new mysqli("localhost", "root", "1234", "dit");
 
 
 	//checking if user has clicked submit.

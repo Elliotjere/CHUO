@@ -2,7 +2,7 @@
 session_start();
 
 //create connection to the database server.
-$conn = new mysqli("localhost", "root", "", "dit");
+$conn = new mysqli("localhost", "root", "1234", "dit");
 
 
 	//creating session variables.

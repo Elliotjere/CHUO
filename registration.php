@@ -2,7 +2,7 @@
 
 session_start();
 
-$link = new mysqli("localhost", "root", "", "dit");
+$link = new mysqli("localhost", "root", "1234", "dit");
      if (!$link) {
 	     echo "there was an error connecting to the web-server";
      }
