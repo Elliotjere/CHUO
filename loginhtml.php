@@ -29,13 +29,11 @@
 
            <button class="btn"  type="submit" value="submited" name = "login">LOGIN </button>
             <h4>Still not connected? <a href="registration.php" target="_blank" style="text-decoration: none;">Sign Up</a></h4>	
-			<script>
 		<?php 
 			if (isset($_SESSION['login'])) {
 			 	echo "<label for = 'loginform' style = 'color:red'>*invalid ID or password</label>";	
 			} 
 		 ?>
-	</script>
 	</div>		
 </form>
 </body>
