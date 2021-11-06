@@ -78,6 +78,7 @@ $link = new mysqli("localhost", "root", "1234", "dit");
 		<br>
 		<input type="password" name="conf-password"   placeholder="confirm password"  id="conf-password">
 		<br>
+		
 		<?php 
 		if (isset($_SESSION['reg_submit'])){
 
