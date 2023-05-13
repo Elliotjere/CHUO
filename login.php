@@ -2,7 +2,7 @@
 session_start();
 
 //create connection to the database server.
-$conn = new mysqli("localhost", "root", "1234", "dit");
+$conn = new mysqli("localhost", "root", "", "dit");
 
 
 	//creating session variables.
@@ -23,7 +23,7 @@ $conn = new mysqli("localhost", "root", "1234", "dit");
 		$_SESSION['name'] = $row['name'];
 
 		if ($idnumber == $row['id'] && $pwd == $row['password'] ) {
-			header("location:main.php");
+			header("location:index.php");
 		}else{
 			header("location:loginhtml.php");
 		}

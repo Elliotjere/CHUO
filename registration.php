@@ -1,8 +1,8 @@
-	<?php 
+<?php 
 
 session_start();
 
-$link = new mysqli("localhost", "root", "1234", "dit");
+$link = new mysqli("localhost", "root", "", "dit");
      if (!$link) {
 	     echo "there was an error connecting to the web-server";
      }
