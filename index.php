@@ -1,5 +1,7 @@
 <?php 
 	session_start();
+
+	$conn = new mysqli("localhost", "root", "", "dit");
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -197,47 +199,38 @@ body.active .wrapper .section{
 
 			<fieldset style="margin-left: 50px; margin-right: 50px; padding: 40px; border-radius: 10px;">
 			<legend><h2 style="margin-top: 20px; margin-left: 30px;">Available Products:</h2></legend>
-			<div class="section_products">
 
-						<div class="ecommerce">
+			<?php
+				// Get images from the database
+				$query = $conn->query("SELECT * FROM products");
 
-						   <div class="product">
-						      <img src="swahili-honey-1kg.png" alt="Product 3">
-						      <h3>Name</h3>
-						      <p>$14.99</p>
-						      <button><i class="fas fa-shopping-cart"></i>Add To Cart</button>
-						    </div>
+				if($query->num_rows > 0){
 
-						    <div class="product">
-						      <img src="swahili-honey-300g.jpg" alt="Product 3">
-						      <h3>Name</h3>
-						      <p>$14.99</p>
-						      <button><i class="fas fa-shopping-cart"></i>Add To Cart</button>
-						  	</div>
+					echo "<div class='section_products'>";
 
-						    <div class="product">
-						      <img src="swahili-honey-30g.jpg" alt="Product 1">
-						      <h3>Name</h3>
-						      <p>$19.99</p>
-						      <button><i class="fas fa-shopping-cart"></i>Add To Cart</button>
-						    </div>
+					echo "<div class='ecommerce'>";
 
-						    <div class="product">
-						      <img src="swahili-honey-500g.png" alt="Product 1">
-						      <h3>Name</h3>
-						      <p>$19.99</p>
-						      <button><i class="fas fa-shopping-cart"></i>Add To Cart</button>
-						    </div>
-						    <div class="product">
-						      <img src="swahili-honey-500g.png" alt="Product 1">
-						      <h3>Name</h3>
-						      <p>$19.99</p>
-						      <button><i class="fas fa-shopping-cart"></i>Add To Cart</button>
-						    </div>
+				    while($row = mysqli_fetch_assoc($query)){
 
+				        $imageURL = 'admin/uploads/'.$row["product_image"];
+				        $imageName = $row["product_name"];
+				        $prod_price = $row["product_price"];
 
-					</div>
-			</div>
+						echo " <div class='product'>
+							      <img src='$imageURL' alt='Product 3'>
+							      <h3>$imageName</h3>
+							      <p>$prod_price TSH</p>
+							      <button>Add To Cart</button>
+							    </div>";
+
+					}
+					echo "</div>
+
+					</div>";
+			}else{
+				echo "<p>There are no products for now to shop";
+			}
+			?>
 			</fieldset>
 			
 			

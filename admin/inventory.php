@@ -1,3 +1,9 @@
+<?php 
+	session_start();
+
+	$conn = new mysqli("localhost", "root", "", "dit");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,18 +145,19 @@ body.active .wrapper .section{
         </div>
         <div class="sidebar">
             <ul>
+            	<li>
+                    <a href="inventory.php"  class="active">
+                        <span class="icon"><i class="fas fa-store"></i></span>
+                        <span class="item">STOCK</span>
+                    </a>
+                </li>
                 <li>
                     <a href="addProduct.html">
                         <span class="icon"><i class="fas fa-plus"></i></span>
                         <span class="item">ADD PRODUCTS</span>
                     </a>
                 </li>
-            	<li>
-                    <a href="inventory.html"  class="active">
-                        <span class="icon"><i class="fas fa-store"></i></span>
-                        <span class="item">INVENTORY</span>
-                    </a>
-                </li>
+
                 <li>
                     <a href="sales.html">
                         <span class="icon"><i class="fas fa-money-bill-alt"></i></span>
@@ -173,24 +180,39 @@ body.active .wrapper .section{
 		<h1> 
 
 			<fieldset style="margin-left: 50px; margin-right: 50px; padding: 40px; border-radius: 10px;">
-			<legend><h2 style="margin-top: 20px; margin-left: 30px;">Inventory</h2></legend>
-			<div class="section_products">
+			<legend><h2 style="margin-top: 20px; margin-left: 30px;">Available Stock</h2></legend>
 
-						<div class="ecommerce">
+			<?php
+				// Get images from the database
+				$query = $conn->query("SELECT * FROM products");
 
-						   <div class="product">
-						      <img src="/CHUO/swahili-honey-1kg.png" alt="Product 3">
-						      <h3>Name</h3>
-						      <p>$14.99</p>
-						    </div>
+				if($query->num_rows > 0){
 
-						    <div class="product">
-						      <img src="swahili-honey-300g.jpg" alt="Product 3">
-						      <h3>Name</h3>
-						      <p>$14.99</p>
-						  	</div>
-					</div>
-			</div>
+					echo "<div class='section_products'>";
+
+					echo "<div class='ecommerce'>";
+
+				    while($row = mysqli_fetch_assoc($query)){
+
+				        $imageURL = 'uploads/'.$row["product_image"];
+				        $imageName = $row["product_name"];
+				        $prod_price = $row["product_price"];
+
+						echo " <div class='product'>
+							      <img src='$imageURL' alt='Product 3'>
+							      <h3>$imageName</h3>
+							      <p>$prod_price TSH</p>
+							    </div>";
+
+					}
+					echo "</div>
+
+					</div>";
+			}else{
+				echo "<p>no products posted yet. please select the Add products menu to add products to the system.</p>";
+			}
+			?>
+
 			</fieldset>
 </body>
 </html>
