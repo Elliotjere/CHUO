@@ -21,7 +21,14 @@
 body{
 	background: #f5f6fa;
 }
-
+button{
+	padding: 12px;
+	background: rgb(7, 105, 185);
+	border-radius: 5px;
+	border-color: rgb(7, 105, 185);
+	color: white;
+	border-style: none;
+}
 .wrapper .sidebar{
 	background: rgb(5, 68, 104);
 	position: fixed;
@@ -128,20 +135,20 @@ body.active .wrapper .section{
                     </a>
                 </li>
                 <li>
-                    <a href="history.html">
+                    <a href="history.php">
                         <span class="icon"><i class="fas fa-history"></i></span>
                         <span class="item">HISTORY</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="cart.html"><i class="fas fa-shopping-cart"></i></span>
+                    <a href="cart.php">
+                        <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                         <span class="item">CART</span>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="active">
-                        <span class="support.html"><i class="fas fa-phone"></i></span>
+                        <span class="icon"><i class="fas fa-phone"></i></span>
                         <span class="item">SUPPORT</span>
                     </a>
                 </li>
@@ -155,5 +162,34 @@ body.active .wrapper .section{
 		document.querySelector("body").classList.toggle("active");
 	})
   </script>
+
+
+			<fieldset style="margin-left: 50px; margin-right: 50px; padding: 40px; border-radius: 10px;">
+			<legend><h2 style="margin-top: 20px; margin-left: 30px;">Customer Supports</h2></legend>
+		<form style="text-align: center;border:3px">
+	
+                <label name="name">Company Name:</label>
+                  <p>ASALI COMPANY</p> <br>
+                <label name="name"><u>Email:</u></label>
+                  <p>asali@gmail.com</p> <br>
+                <label name="name">Phone number:</label>
+                  <p>+255789098798</p> <br>
+                <label name="name">Address:</label>
+                  <p>P.O.BOX 2958,
+                     Bibititi Road,
+                     Dar es salaam 
+                     Tanzania
+                 </p>
+
+              
+               <textarea type="message" name="Message" style="width:400px; height:200px">Write your message
+ 	
+              </textarea> <br>
+ 
+            <button type="submit" name="submit" value="submit" style="width:150px; height: 50px">Submit</button>
+
+         </form>
+
+			</fieldset>
 </body>
 </html>

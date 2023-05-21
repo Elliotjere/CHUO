@@ -1,3 +1,10 @@
+
+<?php
+	session_start();
+
+	$conn = new mysqli("localhost", "root", "", "dit");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +29,30 @@ body{
 	background: #f5f6fa;
 }
 
+button{
+	padding: 12px;
+	background: rgb(7, 105, 185);
+	border-radius: 5px;
+	border-color: rgb(7, 105, 185);
+	color: white;
+	border-style: none;
+}
+
+.checkout{
+	float: right;
+}
+
+.product{
+	position: relative;
+	z-index: -2;
+}
+
+.product-details{
+	position: absolute;
+	display: inline-block;
+	margin-top: 1rem;
+}
+
 .wrapper .sidebar{
 	background: rgb(5, 68, 104);
 	position: fixed;
@@ -31,6 +62,22 @@ body{
 	height: 100%;
 	padding: 20px 0;
 	transition: all 0.5s ease;
+}
+
+img {
+	width: 190px;
+	height:190px;
+	margin: 15px;
+	border-radius: 5px;
+
+}
+.section_products{
+	margin-left: 20px;
+}
+.ecommerce{
+	width: 100%;
+	height: 100%;
+	display: block;
 }
 
 
@@ -128,20 +175,20 @@ body.active .wrapper .section{
                     </a>
                 </li>
                 <li>
-                    <a href="history.html">
+                    <a href="history.php">
                         <span class="icon"><i class="fas fa-history"></i></span>
                         <span class="item">HISTORY</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="active">
-                        <span class="cart.html"><i class="fas fa-shopping-cart"></i></span>
+                    <a href="cart.php" class="active">
+                        <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                         <span class="item">CART</span>
                     </a>
                 </li>
                 <li>
                     <a href="support.html">
-                        <span class="support.html"><i class="fas fa-phone"></i></span>
+                        <span class="icon"><i class="fas fa-phone"></i></span>
                         <span class="item">SUPPORT</span>
                     </a>
                 </li>
@@ -155,5 +202,55 @@ body.active .wrapper .section{
 		document.querySelector("body").classList.toggle("active");
 	})
   </script>
+
+<fieldset style="margin-left: 50px; margin-right: 50px; padding: 40px; border-radius: 10px;">
+			<legend><h2 style="margin-top: 20px; margin-left: 30px;">CART</h2></legend>
+
+			<?php
+				// Get images from the database
+				$userSession = $_SESSION['idnumber'];
+				$query = $conn->query("SELECT * FROM products, Cart WHERE product_ID=Cart.productId AND Cart.sessionID='$userSession'");
+
+				if($query->num_rows > 0){
+
+					echo "<form action = '' method = 'post' enctype='multipart/form-data'>";
+					echo "<div class='section_products'>";
+
+					echo "<div class='ecommerce'>";
+
+					$total_Chart;
+
+				    while($row = mysqli_fetch_assoc($query)){
+
+				        $imageURL = 'admin/uploads/'.$row["product_image"];
+				        $imageName = $row["product_name"];
+				        $prod_price = $row["product_price"];
+				        $prod_id = $row['product_ID'];
+				        $prod_desc = $row['product_desc'];
+
+						echo " <div class='product' style='background:rgb(239, 234, 234); border-radius: 5px;'>
+							      <img src='$imageURL' alt='Product 3'>
+							      <p style='float:right; margin-top:190px; margin-right:20px'>$prod_price TSH</p>
+
+							      <div class='product-details'>
+							      <h3>$imageName</h3>
+							      <p>$prod_desc</p>
+							      </div>
+
+							      <input type = 'text' style='display:none' name = 'prodId' value = '$prod_id'>
+							    </div><br>";
+						$total_Chart = $total_Chart + $prod_price;
+					}
+					echo "</div> 
+
+					</div>";
+					echo "<button class='checkout' name = 'checkout'>CHECKOUT $total_Chart</button>";
+					echo "</form>";
+			}else{
+				echo "<p>you have not added products to cart";
+			}
+			?>
+			</fieldset>  
+
 </body>
 </html>

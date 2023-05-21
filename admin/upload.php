@@ -33,6 +33,7 @@
 
 	            if($insert){
 	                $statusMsg = "The file product has been uploaded successfully. <a href = 'inventory.php'>return</a>";
+	                header("location: inventory.php");
 	            }else{
 	                $statusMsg = "File upload failed, please try again.";
 	            } 

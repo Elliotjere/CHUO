@@ -128,13 +128,13 @@ body.active .wrapper .section{
                     </a>
                 </li>
                 <li>
-                    <a href="history.html"  class="active">
+                    <a href="history.php"  class="active">
                         <span class="icon"><i class="fas fa-history"></i></span>
                         <span class="item">HISTORY</span>
                     </a>
                 </li>
                 <li>
-                    <a href="cart.html">
+                    <a href="cart.php">
                         <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                         <span class="item">CART</span>
                     </a>
@@ -155,5 +155,10 @@ body.active .wrapper .section{
 		document.querySelector("body").classList.toggle("active");
 	})
   </script>
+
+  <fieldset style="margin-left: 50px; margin-right: 50px; padding: 40px; border-radius: 10px;">
+			<legend><h2 style="margin-top: 20px; margin-left: 30px;">HISTORY</h2></legend>
+
+			</fieldset>  
 </body>
 </html>

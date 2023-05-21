@@ -23,10 +23,33 @@
 	font-family: 'Open Sans', sans-serif;
 }
 
+.product{
+	text-align: center;
+}
+
+.searcher{
+	float: right;
+	margin-right: 30px;
+}
+
+.searcher input{
+	padding: 10px;
+}
+
+button{
+	padding: 12px;
+	background: rgb(7, 105, 185);
+	border-radius: 5px;
+	border-color: rgb(7, 105, 185);
+	color: white;
+	border-style: none;
+}
+
 body{
 	background: #f5f6fa;
 	width: 100%;
 	height: 100%;
+	background-image: url('');
 }
 
 .wrapper .sidebar{
@@ -43,18 +66,19 @@ body{
 img {
 	width: 190px;
 	height:190px;
-	margin: 5px;
+	margin: 15px;
+	border-radius: 5px;
 
 }
 
 .section_products{
-	margin-left: 10rem;
+	margin-left: 20px;
 }
 .ecommerce{
 	width: 100%;
 	height: 100%;
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(5, 1fr);
 }
 
 .wrapper .sidebar ul li a{
@@ -163,13 +187,13 @@ body.active .wrapper .section{
                     </a>
                 </li>
                 <li>
-                    <a href="history.html">
+                    <a href="history.php">
                         <span class="icon"><i class="fas fa-history"></i></span>
                         <span class="item">HISTORY</span>
                     </a>
                 </li>
                 <li>
-                    <a href="cart.html">
+                    <a href="cart.php">
                         <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                         <span class="item">CART</span>
                     </a>
@@ -195,7 +219,14 @@ body.active .wrapper .section{
 
 		<h1 id="header-title" style="margin-top: 20px; margin-left: 20px;">
 			Welcome <?php if(isset($_SESSION['login'])){echo $_SESSION['name'];} ?>.
+			<div class="searcher">
+				<input type="search" name="search" placeholder="Search Products">
+				<button type="search" name="search">search</button>
+			</div>
+			
 		<h1> 
+
+		
 
 			<fieldset style="margin-left: 50px; margin-right: 50px; padding: 40px; border-radius: 10px;">
 			<legend><h2 style="margin-top: 20px; margin-left: 30px;">Available Products:</h2></legend>
@@ -206,6 +237,7 @@ body.active .wrapper .section{
 
 				if($query->num_rows > 0){
 
+					echo "<form action = 'cart_process.php' method = 'post' enctype='multipart/form-data'>";
 					echo "<div class='section_products'>";
 
 					echo "<div class='ecommerce'>";
@@ -215,18 +247,20 @@ body.active .wrapper .section{
 				        $imageURL = 'admin/uploads/'.$row["product_image"];
 				        $imageName = $row["product_name"];
 				        $prod_price = $row["product_price"];
+				        $prod_id = $row['product_ID'];
 
 						echo " <div class='product'>
 							      <img src='$imageURL' alt='Product 3'>
 							      <h3>$imageName</h3>
 							      <p>$prod_price TSH</p>
-							      <button>Add To Cart</button>
+							      <button type = 'submit' name ='cart' value='$prod_id'><i class='fas fa-shopping-cart'></i> Add To Cart</button>
 							    </div>";
-
 					}
 					echo "</div>
 
 					</div>";
+
+					echo "</form>";
 			}else{
 				echo "<p>There are no products for now to shop";
 			}
